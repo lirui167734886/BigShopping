@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigshopping.mapper.ShopCatelogeMapper">
+
+    <!-- 开启二级缓存 -->
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bigshopping.bean.ShopCateloge">
+        <id column="id" property="id" />
+        <result column="shop_cateloge_name" property="shopCatelogeName" />
+        <result column="shop_cateloge_phone_logo" property="shopCatelogePhoneLogo" />
+        <result column="shop_cateloge_parent_cateloge" property="shopCatelogeParentCateloge" />
+        <result column="shop_cateloge_num_unit" property="shopCatelogeNumUnit" />
+        <result column="shop_cateloge_order" property="shopCatelogeOrder" />
+        <result column="is_show" property="isShow" />
+        <result column="is_show_nav" property="isShowNav" />
+        <result column="shop_cateloge_attr" property="shopCatelogeAttr" />
+        <result column="shop_cateloge_key_words" property="shopCatelogeKeyWords" />
+        <result column="shop_cateloge_desc" property="shopCatelogeDesc" />
+        <result column="state" property="state" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, shop_cateloge_name, shop_cateloge_phone_logo, shop_cateloge_parent_cateloge, shop_cateloge_num_unit, shop_cateloge_order, is_show, is_show_nav, shop_cateloge_attr, shop_cateloge_key_words, shop_cateloge_desc, state
+    </sql>
+
+</mapper>

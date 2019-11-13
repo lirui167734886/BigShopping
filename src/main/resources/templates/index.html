@@ -1,0 +1,1366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>商家管理中心</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <link rel="shortcut icon" href="https://demo.dscmall.cn/favicon.ico">
+    <link rel="icon" href="https://demo.dscmall.cn/animated_favicon.gif" type="image/gif">
+
+    <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/general.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/purebox.css">
+    <link rel="stylesheet" type="text/css" href="./css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/calendar.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/spectrum.css">
+
+    <script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.json.js"></script>
+    <script type="text/javascript" src="./js/transport_jquery.js"></script>
+    <script type="text/javascript" src="./js/utils.js"></script>
+    <script type="text/javascript" src="./js/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="./js/calendar.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.form.js"></script>
+    <script type="text/javascript" src="./js/jquery.nyroModal.js"></script>
+    <script type="text/javascript" src="./js/jquery.validation.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="./js/lib_ecmobanFunc.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
+    <script type="text/javascript" src="./js/listtable.js"></script>
+    <script type="text/javascript" src="./js/listtable_pb.js"></script>
+    <script type="text/javascript" src="./js/seller.js"></script>
+    <script type="text/javascript" src="./js/sms.js"></script>
+
+    <script type="text/javascript">
+        //这里把JS用到的所有语言都赋值到这里
+        var process_request = "正在处理您的请求...";
+        var todolist_caption = "记事本";
+        var todolist_autosave = "自动保存";
+        var todolist_save = "保存";
+        var todolist_clear = "清除";
+        var js_select = "选择";
+        var js_selected = "已选择";
+        var todolist_confirm_save = "是否将更改保存到记事本？";
+        var todolist_confirm_clear = "是否清空内容？";
+        var start_data_notnull = "开始日期不能为空";
+        var end_data_notnull = "结束日期不能为空";
+        var data_invalid_gt = "输入的结束时间应大于起始日期";
+        var file_not_null = "上传文件不能为空";
+        var confirm_delete = "确定删除吗?";
+        var confirm_delete_fail = "删除失败";
+        var file_null = "请选择上传文件";
+        var title_name_one = "已完成更新，请关闭该窗口！";
+        var title_name_two = "正在更新数据中，请勿关闭该窗口！";
+        var print_batch_content = "请选择打印内容";
+        var jl_can_setup = "可设置";
+        var jl_spand_integral = "消费积分";
+        var jl_level_integral = "等级积分";
+        var jl_can_setup_integral_buy = "可设置积分购买";
+        var jl_money = "金额";
+        var jl_sure_delete_template = "确定删除该运费模板吗？";
+        var jl_area_name_no_empty = "地区名称不能为空！";
+        var jl_no_specialchar = "不能包含特殊字符";
+        var jl_upload_video_fail = "视频上传失败";
+        var jl_upload_video_success = "视频上传成功";
+        var jl_upload_video_format_wrong = "视频上传格式有误";
+        var jl_processing_export_number = "正在处理导出第";
+        var jl_page_data = "页数据...";
+        var jl_completed = "已完成";
+        var jl_completed_close = "全部完成，请关闭窗口";
+        var jl_reminder = "温馨提示";
+        var jl_client_app_no_empty = "客户端应用不可为空";
+        var jl_message_template_no_empty = "消息模板不可为空";
+        var jl_this_area_existed = "该地区已存在";
+        var jl_please_select_album = "请选择相册";
+        var jl_module_max_add = "此模块最多可添加";
+        var jl_ge_image = "个图片";
+        var jl_ge_goods = "个商品";
+        var jl_delete = "删除";
+        var jl_please_select = "请选择...";
+        var jl_cate_no_empty = "分类名称不能为空";
+        var jl_navbar_no_exist = "导航不存在";
+        var jl_goods_import = "商品库商品导入";
+        var rate_empty = "税率不能为空!";
+        var empty_cat_rate = "税率不能为空!";
+        var jl_do_current_cate_do_sure = "执行此操作时，当前分类所有下级分类也同时转移，确定执行吗？";
+        var jl_transfer_goods = "转移商品";
+        var jl_start_transfer = "开始转移";
+        var jl_reset = "重置";
+        var jl_price_area_nosmall_0 = "价格区间不能小于0";
+        var jl_price_area_nobig_10 = "价格区间不能大于10";
+        var jl_this_cate_must_top = "该分类必须是顶级分类才能使用!";
+        var jl_sure_delete_info = "确实要删除该信息吗";
+        var jl_delete_fail = "删除失败!";
+        var jl_edit_success = "修改成功";
+        var jl_region_select = "地区选择";
+        var jl_batch_delivery = "批量发货";
+        var jl_determine = "确定";
+        var jl_cancel = "取消";
+        var jl_close = "关闭";
+        var jl_please_input_giftcard = "请输入礼品卡名称";
+        var jl_please_input_sendnum = "请输入发放数量";
+        var jl_please_input_gc_id = "请输入礼品卡序列号";
+        var jl_gc_id_must_int = "礼品卡序列号必须为整数";
+        var jl_gc_id_must_max_7_bit = "礼品卡序列号必须为大于等于7位数";
+        var jl_please_input_gc_pwd = "请输入礼品卡密码";
+        var jl_gc_pwd_must_int = "礼品卡密码必须为整数";
+        var jl_gc_pwd_must_max_7_bit = "礼品卡密码必须为大于等于6位数";
+        var jl_pls_select_file_encode = "请选择文件编码";
+        var jl_pls_select_upload_file = "请选择上传文件";
+        var jl_pls_select_file_format = "请选择数据格式";
+        var jl_pls_select_belong_cate = "请选择所属分类";
+        var jl_pls_upload_batch_csv = "请上传批量csv文件";
+        var jl_uploaded_complete = "已下载完成！";
+        var jl_no_select_bargain_goods = "您没有选砍价商品！";
+        var jl_you_no = "您没有";
+        var jl_separator_null = "分隔符不可以不填写";
+        var jl_shop_guide = "店铺指引";
+        var jl_ok_i_know = "好的，我知道了";
+        var jl_know_next = "了解了，下一步";
+        var jl_print_no_printer = "该打印规格还没有设置指定的打印机";
+        var jl_print_express_form = "打印快递单";
+        var jl_user_name_not_null = "用户名不能为空";
+        var jl_pwd_not_null = "密码不能为空";
+        var jl_verify_not_null = "验证码不能为空";
+        var jl_verify_wrong = "验证码错误";
+        var jl_name_pwd_wrong = "用户名或密码错误";
+        var jl_admin_name_not_null = "管理员名称不能为空";
+        var jl_email_not_null = "邮箱不能为空";
+        var jl_email_format_wrong = "邮箱格式不正确";
+        var jl_new_pwd_not_null = "新密码不能为空";
+        var jl_pwd_nolessthan_6 = "密码不能小于6位";
+        var jl_repwd_not_null = "重复密码不能为空";
+        var jl_pwd_not_equal = "密码输入不一致";
+        var jl_not_null = "不能为空";
+        var jl_format_wrong = "格式不正确";
+        var jl_payment_not_null = "支付方式不能为空";
+        var jl_pay_year_not_small_1 = "缴纳年限不能小于1";
+        var jl_input_content_wrongful = "输入内容不合法";
+        var jl_window_name_not_null = "橱窗名称不能为空";
+        var jl_order_settle_export_window = "订单结算导出弹窗";
+        var jl_no_send_goods_info_yet = "暂无确认发货信息";
+        var jl_buy_list = "购物清单";
+        var jl_select_print_specification = "请选择打印规格";
+        var jl_fill_printer_name = "请填写打印机名称";
+        var jl_market_price = "市场价";
+        var jl_shop_price = "本店价";
+        var jl_select_warehouse = "请选择仓库";
+        var jl_select_region = "请选择地区";
+        var jl_goods_stock_no_enough = "商品库存不足";
+        var jl_upload_img = "上传图片";
+        var jl_sure_delete = "确定删除吗？";
+        var jl_select_print_content = "请选择打印内容";
+        var jl_order_id = "订单号";
+        var jl_sure_export_dialog_log = "确认导出聊天记录？";
+        var jl_sure_selected_delete = "您确实要把选中的商品放入回收站吗？";
+        var jl_sure_selected_outsale = "您确实要将选定的商品下架吗？";
+        var jl_please_select_goods_gou = "请勾选商品";
+        var jl_please_select_express_company = "请选择快递公司";
+        var jl_please_input_express_number = "请填写快递单号";
+        var jl_pay_success = "支付成功";
+        var jl_select_upload_img = "请选择上传图片";
+        var jl_select_deliver = "请选择配送方式";
+        var jl_get_lat_lon = "获取经纬度";
+        var jl_nationwide = "全国";
+        var jl_please_search_goods = "请先搜索商品";
+        var jl_please_select_member_level = "请选择适用会员等级";
+        var jl_sure_delete_deliver_fee_tpl = "确定删除该运费模板么？";
+        var jl_select_region_alt = "选择地区";
+        var jl_select_express = "选择快递";
+        var jl_edit_deliver_fee_tpl = "编辑运费模板";
+        var jl_fast_door_max_8 = "快捷操作最多添加8个";
+        var jl_wrong_tip = "错误提示";
+        var jl_title_not_null = "标题不为空";
+        var jl_edit_freight_tpl = "编辑运费模板";
+        var expand_all = "展开";
+        var collapse_all = "闭合";
+        var shop_name_not_null = "商店名称不能为空";
+        var good_name_not_null = "商品名称不能为空";
+        var good_category_not_null = "商品分类不能为空";
+        var good_number_not_number = "商品数量不是数值";
+        var novice_guide_step_next = "了解了，下一步";
+        var novice_guide_step_prev = "上一步";
+        var novice_guide_step_hint = "好的，我知道了";
+        var select_shipping = "请选择配送方式";
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+    <style type="text/css" abt="234"></style>
+    <script>//remove baidu search ad
+    var _countAA = 0
+
+    function doBBBd() {
+        var alla = document.getElementsByTagName('a')
+        for (var i = 0; i < alla.length; i++) {
+            if (/baidu.com\/(baidu.php\?url=|adrc.php\?t)/.test(alla[i].href)) {
+                var _temp = alla[i].parentElement, loop = 0
+                while (loop < 5) {
+                    _temp = _temp.parentElement
+                    loop++
+                    if (_temp.parentElement.id == 'content_left') {
+                        _temp.remove()
+                        break
+                    }
+                }
+            }
+        }
+
+        if (_countAA++ < 20) {
+            setTimeout(doBBBd, 500)
+        }
+
+    }
+
+    doBBBd()
+    document.addEventListener('keyup', function () {
+        _countAA -= 10;
+        doBBBd()
+    }, false)
+    document.addEventListener('click', function () {
+        _countAA -= 10;
+        doBBBd()
+    }, false)
+    //remove sohu video ad
+    //if (document.URL.indexOf("tv.sohu.com") >= 0){
+    //    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+    //}
+    //remove 56.com video ad
+    //if (document.URL.indexOf("56.com") >= 0){
+    //    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+    //}
+    </script>
+</head>
+
+<body>
+<div class="ecsc-head-layout">
+    <div class="wrapper">
+        <div class="admin-logo">
+            <a href="https://demo.dscmall.cn/seller/">
+                <div class="t">
+                    <img style="width: 100%;" src="./images/seller_logo.png" class="logo">
+                    <h1>管理中心</h1>
+                </div>
+                <div class="en"><img src="./images/en.png"></div>
+            </a>
+        </div>
+        <div class="ecsc-nav">
+            <ul class="ecsc-nav-ul">
+                <li class="current"><a href="https://demo.dscmall.cn/seller/">首页</a>
+                    <div class="arrow"></div>
+                </li>
+                <li><a href="https://demo.dscmall.cn/seller/goods.php?act=list">商品</a>
+                    <div class="arrow"></div>
+                </li>
+                <li><a href="https://demo.dscmall.cn/seller/snatch.php?act=list">促销</a>
+                    <div class="arrow"></div>
+                </li>
+                <li><a href="https://demo.dscmall.cn/seller/order.php?act=list">订单</a>
+                    <div class="arrow"></div>
+                </li>
+                <li><a href="https://demo.dscmall.cn/seller/order_stats.php?act=list">报表</a>
+                    <div class="arrow"></div>
+                </li>
+                <li><a href="https://demo.dscmall.cn/seller/offline_store.php?act=list">门店</a>
+                    <div class="arrow"></div>
+                </li>
+                <li><a href="https://demo.dscmall.cn/seller/privilege_seller.php?act=list">权限</a>
+                    <div class="arrow"></div>
+                </li>
+                <li><a href="https://demo.dscmall.cn/seller/shipping.php?act=list">系统</a>
+                    <div class="arrow"></div>
+                </li>
+                <li><a href="https://demo.dscmall.cn/seller/merchants_commission.php?act=list">商家</a>
+                    <div class="arrow"></div>
+                </li>
+                <li><a href="https://demo.dscmall.cn/seller/index.php?act=merchants_first">店铺</a>
+                    <div class="arrow"></div>
+                </li>
+                <li><a href="https://demo.dscmall.cn/seller/wechat">微信</a>
+                    <div class="arrow"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="ecsc-admin">
+            <div class="avatar">
+                <form action="https://demo.dscmall.cn/seller/index.php" method="post" enctype="multipart/form-data"
+                      runat="server">
+                    <input type="hidden" name="act" value="upload_store_img">
+                    <input type="file" name="img">
+                    <input type="hidden" name="_token" value="glWmI5PM3Dtnx9yWJicAx1BLDXFE48OmCQCIbH8g"></form>
+                <a href="javascript:void(0);"><img src="./images/1572915876078212547.jpg"></a>
+            </div>
+            <dl>
+                <dt>
+                    <span>ecmoban2</span>
+                    <a href="https://demo.dscmall.cn/seller/privilege.php?act=modif" class="modif"><i
+                            class="icon icon-edit"></i></a></dt>
+                <dd>
+                    <span><i class="sc_icon sc_icon_seller"></i><a class="navbar-brand"
+                                                                   href="https://demo.dscmall.cn/merchants_store.php?merchant_id=2"
+                                                                   target="_blank">店铺</a></span>
+                    <span><i class="sc_icon sc_icon_set"></i><a class="navbar-brand navbar-right"
+                                                                href="https://demo.dscmall.cn/seller/index.php?act=clear_cache">清缓存</a></span>
+                    <span><i class="sc_icon sc_icon_out"></i><a class="navbar-brand navbar-right"
+                                                                href="https://demo.dscmall.cn/seller/privilege.php?act=logout">退出</a></span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //上传管理员头像
+    $("[runat='server'] input[name='img']").change(function () {
+        var actionUrl = "index.php?act=upload_store_img";
+        $("[runat='server']").ajaxSubmit({
+            type: "POST",
+            dataType: "json",
+            url: actionUrl,
+            data: {"action": "TemporaryImage"},
+            success: function (data) {
+                if (data.error == "0") {
+                    alert(data.massege);
+                } else if (data.error == "1") {
+                    $(".avatar img").attr("src", data.content);
+                }
+            },
+            async: true
+        });
+    });
+
+    Ajax.call('index.php?is_ajax=1&act=login_status', '', function (data) {
+        if (data.status == 1) {
+            window.location.href = 'privilege.php?act=logout'
+        }
+    }, 'GET', 'JSON');
+</script>
+<div class="ecsc-layout">
+    <div class="site wrapper">
+        <div class="ecsc-layout-left">
+            <div class="sidebar" id="sidebar">
+                <div class="column-menu">
+                    <div class="welcome">欢迎页
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="add-quickmenu">
+                        <a href="javascript:void(0);">添加快捷功能</a>
+                    </div>
+                    <ul id="seller_center_left_menu" style="padding-top:10px;">
+
+                    </ul>
+                    <div class="sitemap-menu">
+                        <div class="sitemap-menu-arrow">
+                            <div class="arrow1"></div>
+                            <div class="arrow2"></div>
+                        </div>
+                        <div class="title-bar">
+                            <h2>管理导航</h2>
+                            <span id="closeSitemap" class="close"></span>
+                        </div>
+                        <div class="content" id="quicklink_list">
+                            <dl>
+                                <dt>商品</dt>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="01_goods_list" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="01_goods_list" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/goods.php?act=list">商品列表</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="03_store_category_list"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="03_store_category_list"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/category_store.php?act=list">店铺商品分类</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="04_goods_lib_list"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="04_goods_lib_list"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/goods_lib.php?act=list">商品库商品</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="05_comment_manage"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="05_comment_manage"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/comment_manage.php?act=list">用户评论</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="07_merchants_brand"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="07_merchants_brand"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/merchants_brand.php?act=list">商家品牌</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="08_goods_type" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="08_goods_type" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/goods_type.php?act=manage">商品类型</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="15_batch_edit" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="15_batch_edit" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/goods_batch.php?act=select">商品批量修改</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="discuss_circle" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="discuss_circle" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/discuss_circle.php?act=list">网友讨论圈</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="gallery_album" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="gallery_album" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/gallery_album.php?act=list">图片库管理</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="goods_auto" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="goods_auto" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/goods_auto.php?act=list">商品自动上下架</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>促销</dt>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="02_snatch_list" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="02_snatch_list" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/snatch.php?act=list">夺宝奇兵</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="03_seckill_list"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="03_seckill_list"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/seckill.php?act=list">秒杀活动</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="04_bonustype_list"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="04_bonustype_list"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/bonus.php?act=list">红包类型</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="08_group_buy" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="08_group_buy" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/group_buy.php?act=list">团购活动</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="09_topic" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="09_topic" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/topic.php?act=list">专题管理</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="10_auction" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="10_auction" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/auction.php?act=list">拍卖活动</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="12_favourable" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="12_favourable" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/favourable.php?act=list">优惠活动</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="14_package_list"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="14_package_list"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/package.php?act=list">超值礼包</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="15_exchange_goods"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="15_exchange_goods"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/exchange_goods.php?act=list">积分商城商品</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="16_presale" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="16_presale" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/presale.php?act=list">预售活动</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="17_coupons" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="17_coupons" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/coupons.php?act=list">优惠券</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="18_team" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="18_team" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/team.php?act=list">拼团活动</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="19_bargain" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="19_bargain" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/bargain.php?act=list">砍价活动</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="gift_gard_list" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="gift_gard_list" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/gift_gard.php?act=list">礼品卡列表</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>订单</dt>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="02_order_list" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="02_order_list" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/order.php?act=list">订单列表</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="06_undispose_booking"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="06_undispose_booking"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/goods_booking.php?act=list_all">缺货登记</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="09_delivery_order"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="09_delivery_order"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/order.php?act=delivery_list">发货单列表</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="10_back_order" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="10_back_order" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/order.php?act=back_list">退货单列表</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="11_complaint" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="11_complaint" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/complaint.php?act=list">投诉管理</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="11_order_delayed"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="11_order_delayed"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/order_delay.php?act=list">延迟收货</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="11_order_detection"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="11_order_detection"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/order.php?act=order_detection">检测已发货订单</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="12_back_apply" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="12_back_apply" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/order.php?act=return_list">单品退货单列表</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="13_goods_inventory_logs"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="13_goods_inventory_logs"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/goods_inventory_logs.php?act=list">商品库存日志</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>报表</dt>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="report_order" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="report_order" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/order_stats.php?act=list">订单统计</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="report_sell" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="report_sell" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/sale_general.php?act=list">销售概况</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="sale_list" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="sale_list" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/sale_list.php?act=list">销售明细</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="sell_stats" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="sell_stats" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/sale_order.php?act=goods_num">销售排行</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>门店</dt>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="12_offline_store"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="12_offline_store"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/offline_store.php?act=list">门店管理</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="2_order_stats" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="2_order_stats" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/offline_store.php?act=order_stats">门店销售统计</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>权限</dt>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="02_admin_seller"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="02_admin_seller"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/privilege_seller.php?act=list">下级管理员列表</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="admin_logs" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="admin_logs" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/admin_logs.php?act=list">管理员日志</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="privilege_seller"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="privilege_seller"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/privilege.php?act=modif">编辑个人资料</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>系统</dt>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="03_shipping_list"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="03_shipping_list"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/shipping.php?act=list">配送方式</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="09_warehouse_management"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="09_warehouse_management"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/warehouse.php?act=list">仓库管理</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>商家</dt>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="03_merchants_commission"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="03_merchants_commission"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/merchants_commission.php?act=list">店铺结算</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="10_account_manage"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="10_account_manage"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/merchants_account.php?act=account_manage&amp;act_type=account">店铺账户</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>店铺</dt>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="01_merchants_basic_info"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="01_merchants_basic_info"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/index.php?act=merchants_first">店铺基本信息设置</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="09_merchants_upgrade"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="09_merchants_upgrade"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/merchants_upgrade.php?act=list">店铺等级入驻</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="10_visual_editing"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="10_visual_editing"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/visual_editing.php?act=templates">店铺可视化装修</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="11_touch_dashboard"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="11_touch_dashboard"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/touch_visual">手机可视化装修</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="order_print_setting"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="order_print_setting"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/tp_api.php?act=order_print_setting">打印设置</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>微信</dt>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="01_wechat_admin"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="01_wechat_admin"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/wechat">公众号设置</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="02_mass_message"
+                                       class="icon-check" title="添加为常用功能菜单" data-action="02_mass_message"
+                                       data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/wechat/mass_message">群发消息</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="03_auto_reply" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="03_auto_reply" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/wechat/reply_subscribe">自动回复</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="04_menu" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="04_menu" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/wechat/menu_list">自定义菜单</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="05_fans" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="05_fans" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/wechat/subscribe_list">粉丝管理</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="06_media" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="06_media" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/wechat/article">素材管理</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="07_qrcode" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="07_qrcode" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/wechat/qrcode_list">二维码管理</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="09_extend" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="09_extend" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/wechat/extend_index">功能扩展</a>
+                                </dd>
+                                <dd>
+                                    <i nctype="btn_add_quicklink" data-quicklink-act="10_market" class="icon-check"
+                                       title="添加为常用功能菜单" data-action="10_market" data-status="0"></i>
+                                    <a href="https://demo.dscmall.cn/seller/wechat/market_index">营销中心</a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //添加删除快捷操作
+                $('[nctype="btn_add_quicklink"]').on('click', function () {
+                    //by wu start
+                    var menu_curr = $(this).data('action');
+                    var menu_status = $(this).data('status');
+                    var menu_left = $("#seller_center_left_menu").find("[data-action=" + menu_curr + "]");
+                    if (menu_left.length > 0) {
+                        menu_left.remove();
+                    }
+
+                    var menu_count = $('#seller_center_left_menu').find('li').length;
+                    if (menu_count > 7 && menu_status === 0) {
+                        document.getElementsByClassName("alert_error").innerHtml("<i class='alert_error'></i>" + jl_fast_door_max_8, jl_wrong_tip);
+                        return;
+                    }
+
+                    $.ajax({
+                        type: 'get',
+                        url: 'index.php',
+                        data: 'act=change_user_menu&action=' + menu_curr + '&status=' + menu_status,
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.error == 1) {
+                                $('[nctype="btn_add_quicklink"][data-action=' + menu_curr + ']').attr('data-status', 1);
+                            }
+                            if (data.error == 2) {
+                                $('[nctype="btn_add_quicklink"][data-action=' + menu_curr + ']').attr('data-status', 0);
+                            }
+                        }
+                    })
+                    //by wu end
+
+                    var $quicklink_item = $(this).parent();
+                    var items = $(this).attr('data-quicklink-act');
+                    if ($quicklink_item.hasClass('selected')) {
+                        $quicklink_item.removeClass("selected");
+                    } else {
+                        $quicklink_item.addClass("selected");
+                        var $link = $quicklink_item.find('a');
+                        var menu_name = $link.text();
+                        var menu_link = $link.attr('href');
+                        var menu_item = '<li id="quicklink_' + items + '" data-action="' + menu_curr + '"><a href="' + menu_link + '">' + menu_name + '</a></li>'
+                        $(menu_item).appendTo('#seller_center_left_menu').hide().fadeIn();
+                    }
+                })
+            });
+
+            //添加快捷菜单 by wu
+            function addUserMenu(obj, memu) {
+                var um = $(obj);
+                if (um.parents().attr('class') == undefined) {
+                    alert(um.parents().attr('class'));
+                }
+                if (um.parents().attr('class') == 'selected') {
+
+                }
+            }
+        </script>
+        <div class="ecsc-layout-right">
+            <div class="main-content" id="mainContent">
+                <div class="top-container">
+                    <div class="basic-info">
+                        <div class="ecsc-seller-info">
+                            <div class="store-logo"><img src="./images/1490153973737916372.jpg"></div>
+                            <div class="store-info">
+                                <div class="seller-name">绿联有限公司</div>
+                                <div class="seller-desc">
+                                    <div class="item">
+                                        <span><em>用 户 名：</em><strong>ecmoban2</strong></span>
+                                        <span class="store-name"><em>店铺名称：</em><strong><a
+                                                href="https://demo.dscmall.cn/merchants_store.php?merchant_id=2"
+                                                target="_blank">绿联专卖店</a></strong></span>
+                                    </div>
+                                    <div class="item">
+                                        <span><em>管理权限：</em><strong>管理员</strong></span>
+                                        <span><em>最后登录：</em><strong>2019-11-13 10:00:02</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-items">
+                                <ul>
+                                    <li>
+                                        <a href="https://demo.dscmall.cn/seller/order.php?act=list&amp;shipped_deal=shipped_deal">待处理订单<em>(2)</em></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://demo.dscmall.cn/seller/favourable.php?act=list">当前优惠活动<em>(0)</em></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://demo.dscmall.cn/seller/favourable.php?act=list&amp;fav_dateout=1">即将到期优惠活动<em>(0)</em></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://demo.dscmall.cn/seller/order.php?act=return_list">退换货订单<em>(0)</em></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://demo.dscmall.cn/seller/comment_manage.php?act=list&amp;reply=1">待商品回复咨询<em>(0)</em></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="detail-rate">
+                            <div class="title">店铺动态评分</div>
+                            <ul>
+                                <li>
+                                    <div class="canvas" data-per="80">
+                                        <div class="canvas_wrap">
+                                            <div class="circle clip-auto">
+                                                <div class="circle_item circle_left"
+                                                     style="transform: rotate(288deg);"></div>
+                                                <div class="circle_item circle_right"></div>
+                                            </div>
+                                            <div class="canvas_num">5分</div>
+                                        </div>
+                                    </div>
+                                    <span>描述相符</span>
+                                </li>
+                                <li>
+                                    <div class="canvas" data-per="70">
+                                        <div class="canvas_wrap">
+                                            <div class="circle clip-auto">
+                                                <div class="circle_item circle_left"
+                                                     style="transform: rotate(252deg);"></div>
+                                                <div class="circle_item circle_right"></div>
+                                            </div>
+                                            <div class="canvas_num">5分</div>
+                                        </div>
+                                    </div>
+                                    <span>服务态度</span>
+                                </li>
+                                <li>
+                                    <div class="canvas" data-per="83.4">
+                                        <div class="canvas_wrap">
+                                            <div class="circle clip-auto">
+                                                <div class="circle_item circle_left"
+                                                     style="transform: rotate(300.24deg);"></div>
+                                                <div class="circle_item circle_right"></div>
+                                            </div>
+                                            <div class="canvas_num">5分</div>
+                                        </div>
+                                    </div>
+                                    <span>发货速度</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="seller-cont">
+                    <div class="container_left">
+                        <div class="container type-a type-one">
+                            <div class="hd">
+                                <h3>店铺及商品提示</h3>
+                            </div>
+                            <div class="content">
+                                <ul>
+                                    <li><a href="https://demo.dscmall.cn/seller/goods.php?act=list&amp;is_on_sale=1"
+                                           target="_blank">出售中的商品<em>(10)</em></a></li>
+                                    <li><a href="https://demo.dscmall.cn/seller/goods.php?act=trash" target="_blank">商品回收站<em>(2)</em></a>
+                                    </li>
+                                    <li><a href="https://demo.dscmall.cn/seller/goods.php?act=list&amp;is_on_sale=0"
+                                           target="_blank">已下架的商品<em>(1)</em></a></li>
+                                    <li><a href="https://demo.dscmall.cn/seller/goods.php?act=list&amp;stock_warning=1"
+                                           target="_blank">库存预警商品<em>(2)</em></a></li>
+                                    <li>
+                                        <a href="https://demo.dscmall.cn/seller/goods.php?act=list&amp;intro_type=store_new"
+                                           target="_blank">新品商品数<em>(1)</em></a></li>
+                                    <li>
+                                        <a href="https://demo.dscmall.cn/seller/goods.php?act=list&amp;intro_type=store_best"
+                                           target="_blank">精品商品数<em>(1)</em></a></li>
+                                    <li>
+                                        <a href="https://demo.dscmall.cn/seller/goods.php?act=list&amp;intro_type=store_hot"
+                                           target="_blank">热销商品数<em>(1)</em></a></li>
+                                    <li>
+                                        <a href="https://demo.dscmall.cn/seller/goods.php?act=list&amp;intro_type=is_promote"
+                                           target="_blank">促销商品数<em>(0)</em></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="container type-a type-two">
+                            <div class="hd">
+                                <h3>交易提示</h3>
+                            </div>
+                            <div class="content">
+                                <ul>
+                                    <li><a href="https://demo.dscmall.cn/seller/order.php?act=list&amp;serch_type=0"
+                                           target="_blank">待确定<em>(0)</em></a></li>
+                                    <li><a href="https://demo.dscmall.cn/seller/order.php?act=list&amp;serch_type=100"
+                                           target="_blank">待付款<em>(0)</em></a></li>
+                                    <li><a href="https://demo.dscmall.cn/seller/order.php?act=list&amp;serch_type=101"
+                                           target="_blank">待发货<em>(0)</em></a></li>
+                                    <li><a href="https://demo.dscmall.cn/seller/order.php?act=list&amp;serch_type=102"
+                                           target="_blank">已完成<em>(1)</em></a></li>
+                                    <li><a href="https://demo.dscmall.cn/seller/goods_booking.php?act=list_all"
+                                           target="_blank">缺货登记<em>(0)</em></a></li>
+                                    <li><a href="https://demo.dscmall.cn/seller/goods.php?act=no_comment"
+                                           target="_blank">待评价<em>(0)</em></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container_right">
+                        <div class="container type-b type-b-one">
+                            <div class="hd">
+                                <h3>商家帮助</h3>
+                            </div>
+                            <div class="content">
+                                <ul>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="container type-b type-b-two">
+                            <div class="hd">
+                                <h3>联系方式</h3>
+                            </div>
+                            <div class="content">
+                                <ul>
+                                    <li>电话：</li>
+                                    <li>邮箱：</li>
+                                    <li>地址：</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seller-cont">
+                    <div class="hd">
+                        <h3>店铺数据<font style="font-size:12px; color:#7d7d7d">（已成交付款为准：已付款订单）</font></h3>
+                    </div>
+                    <div class="main-left">
+                        <div class="container">
+                            <div class="container-left"><i class="shop-icon shop-icon-pc"></i></div>
+                            <div class="container-right">
+                                <ul>
+                                    <li>今日PC客单价<p>0</p></li>
+                                    <li>今日PC成交额<p>0</p></li>
+                                    <li>今日PC子订单数<p>0</p></li>
+                                </ul>
+                                <ul>
+                                    <li>昨日PC客单价<p>0</p></li>
+                                    <li>昨日PC成交额<p>0</p></li>
+                                    <li>昨日PC子订单数<p>0</p></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="container-left"><i class="shop-icon shop-icon-move"></i></div>
+                            <div class="container-right">
+                                <ul>
+                                    <li>今日移动客单价<p>0</p></li>
+                                    <li>今日移动成交额<p>0</p></li>
+                                    <li>今日移动子订单数<p>0</p></li>
+                                </ul>
+                                <ul>
+                                    <li>昨日移动客单价<p>0</p></li>
+                                    <li>昨日移动成交额<p>0</p></li>
+                                    <li>昨日移动子订单数<p>0</p></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-right">
+                        今日总成交额<p>¥0.00</p>
+                        今日全店成交转化率<p>0.000</p>
+                    </div>
+                </div>
+                <div class="rank-container">
+                    <div class="container type-a">
+                        <div class="hd">
+                            <h3>单品销售排名</h3>
+                        </div>
+                        <div class="content">
+                            <table class="ecsc-default-table rank">
+                                <thead>
+                                <tr>
+                                    <th width="20%" class="frist">排名</th>
+                                    <th width="65%" class="tl">商品信息</th>
+                                    <th width="15%">销量(件)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="bd-line2">
+                                    <td class="frist">1</td>
+                                    <td class="tl"><a target="_blank" href="https://demo.dscmall.cn/goods.php?id=706"
+                                                      class="goods_name"> 4色现货[送壳钢膜耳机]Xiaomi/小米 红米Note4X 32G全网通4G版5C
+                                        现货送手机壳、钢化膜、耳机</a></td>
+                                    <td class="tc">0</td>
+                                </tr>
+                                <tr class="bd-line2">
+                                    <td class="frist">2</td>
+                                    <td class="tl"><a target="_blank" href="https://demo.dscmall.cn/goods.php?id=1050"
+                                                      class="goods_name"> 超诺淋浴套装 太空铝增压花洒水龙头 三档冷热可升降喷头带下出水 拒绝生锈 十年质保
+                                        历久弥新</a></td>
+                                    <td class="tc">0</td>
+                                </tr>
+                                <tr class="bd-line2">
+                                    <td class="frist">3</td>
+                                    <td class="tl"><a target="_blank" href="https://demo.dscmall.cn/goods.php?id=699"
+                                                      class="goods_name"> 红色特别版 Apple/苹果 iPhone 7 128G 全网通4G智能手机</a>
+                                    </td>
+                                    <td class="tc">0</td>
+                                </tr>
+                                <tr class="bd-line2">
+                                    <td class="frist">4</td>
+                                    <td class="tl"><a target="_blank" href="https://demo.dscmall.cn/goods.php?id=700"
+                                                      class="goods_name"> 小米红米3s手机壳保护套红米3高配版指纹男女款潮版磨砂硬壳防摔 收藏截图 送大礼包</a>
+                                    </td>
+                                    <td class="tc">0</td>
+                                </tr>
+                                <tr class="bd-line2">
+                                    <td class="frist">5</td>
+                                    <td class="tl"><a target="_blank" href="https://demo.dscmall.cn/goods.php?id=702"
+                                                      class="goods_name"> 唐麦 T0耳机耳塞入耳式重低音线控带麦K歌耳麦手机笔记本电脑通用 K歌语音清晰 佩戴舒适牢靠
+                                        一年质保换新</a></td>
+                                    <td class="tc">0</td>
+                                </tr>
+                                <tr class="bd-line2">
+                                    <td class="frist">6</td>
+                                    <td class="tl"><a target="_blank" href="https://demo.dscmall.cn/goods.php?id=701"
+                                                      class="goods_name"> PENTAX 宾得 K-1
+                                        K1(28-105mm/15-30mm/24-70mm/70-200mm f2.8) 官方授权 正规发票 送好礼</a></td>
+                                    <td class="tc">0</td>
+                                </tr>
+                                <tr class="bd-line2">
+                                    <td class="frist">7</td>
+                                    <td class="tl"><a target="_blank" href="https://demo.dscmall.cn/goods.php?id=704"
+                                                      class="goods_name"> Ordro/欧达 Z20 数码摄像机支持wifi 高清广角专业家用商务婚庆DV
+                                        可加热靴索尼影像2400万1080P</a></td>
+                                    <td class="tc">0</td>
+                                </tr>
+                                <tr class="bd-line2">
+                                    <td class="frist">8</td>
+                                    <td class="tl"><a target="_blank" href="https://demo.dscmall.cn/goods.php?id=703"
+                                                      class="goods_name"> 【套餐送豪礼】Samsung/三星Galaxy C7 C7000全网通4G手机</a>
+                                    </td>
+                                    <td class="tc">0</td>
+                                </tr>
+                                <tr class="bd-line2">
+                                    <td class="frist">9</td>
+                                    <td class="tl"><a target="_blank" href="https://demo.dscmall.cn/goods.php?id=705"
+                                                      class="goods_name"> 绿联 数据线安卓高速单头加长手机通用华为魅族小米2a快充电器2米
+                                        铝合金外壳+纯铜芯，充电快寿命长</a></td>
+                                    <td class="tc">0</td>
+                                </tr>
+                                <tr class="bd-line2">
+                                    <td class="frist">10</td>
+                                    <td class="tl"><a target="_blank" href="https://demo.dscmall.cn/goods.php?id=1056"
+                                                      class="goods_name"> 士大夫撒旦</a></td>
+                                    <td class="tc">0</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="container type-a">
+                        <div class="hd">
+                            <h3>销售情况统计<font style="font-size:12px; color:#7d7d7d">（已成交付款为准：已付款订单）</font></h3>
+                        </div>
+                        <div class="content">
+                            <table class="ecsc-default-table count">
+                                <thead>
+                                <tr>
+                                    <th width="10%" class="frist">项目</th>
+                                    <th width="70%">订单量(笔)</th>
+                                    <th width="20%">订单金额(元)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="bd-line2">
+                                    <td class="frist">昨日销量</td>
+                                    <td>0</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr class="bd-line2">
+                                    <td>月销量</td>
+                                    <td>0</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr class="bd-line2">
+                                    <td>总销量</td>
+                                    <td>0</td>
+                                    <td>0.00</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="guide_dialog" ectype="guide_dialog" style="display:none;">
+    <div class="tit">入驻开店后，苦于无从下手，怎么办？跟随店铺指引，轻松搞定！</div>
+    <div class="guide_content" ectype="guide_content">
+        <div class="guide_step">
+            <div class="item current">
+                <h2>店铺基本设置</h2>
+                <div class="spliy">-------<i class="gicon"></i></div>
+            </div>
+            <div class="item">
+                <h2>商品列表</h2>
+                <div class="spliy">-------<i class="gicon"></i></div>
+            </div>
+            <div class="item">
+                <h2>设置配送及运费模板</h2>
+                <div class="spliy">-------<i class="gicon"></i></div>
+            </div>
+            <div class="item">
+                <h2>装修</h2>
+                <div class="spliy">-------<i class="gicon"></i></div>
+            </div>
+            <div class="item">
+                <h2>完成</h2>
+            </div>
+        </div>
+        <div class="guide_list">
+            <div class="guide_item guide_one"><a href="https://demo.dscmall.cn/seller/index.php?act=merchants_first"
+                                                 target="_blank"><img src="./images/guide_img_1.jpg"></a></div>
+            <div class="guide_item guide_two" style="display:none;"><a
+                    href="https://demo.dscmall.cn/seller/goods.php?act=list" target="_blank"><img
+                    src="./images/guide_img_2.jpg"></a></div>
+            <div class="guide_item guide_three" style="display:none;"><a
+                    href="https://demo.dscmall.cn/seller/shipping.php?act=list" target="_blank" class="a_left"></a><a
+                    href="https://demo.dscmall.cn/seller/merchants_steps.php?act=step_up" target="_blank"
+                    class="a_right"></a><img src="./images/guide_img_3.jpg"></div>
+            <div class="guide_item guide_four" style="display:none;"><a
+                    href="https://demo.dscmall.cn/seller/visual_editing.php?act=templates" target="_blank"><img
+                    src="./images/guide_img_4.jpg"></a></div>
+            <div class="guide_item guide_five" style="display:none;"><a href="https://demo.dscmall.cn/seller/index.php"
+                                                                        target="_blank"><img
+                    src="./images/guide_img_5.jpg"></a></div>
+        </div>
+        <div class="guide_btn" data-type="0">
+            <a href="javascript:void(0);" class="btn_next" ectype="btnNext">了解了，下一步</a>
+            <a href="javascript:void(0);" class="btn_prev btn_disabled" ectype="btnPrev">上一步</a>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>版权所有 © 2005-2018 上海商创网络科技有限公司，并保留所有权利。 Powered by <span class="vol">demo.dscmall.cn</span></p>
+</div>
+<script type="text/javascript">
+    document.onmousemove = function (e) {
+        var obj = Utils.srcElement(e);
+        if (typeof (obj.onclick) == 'function' && obj.onclick.toString().indexOf('listTable.edit') != -1) {
+            obj.title = '点击修改内容';
+            //obj.style.cssText = 'background: #278296;';
+            obj.onmouseout = function (e) {
+                this.style.cssText = '';
+            }
+        } else if (typeof (obj.href) != 'undefined' && obj.href.indexOf('listTable.sort') != -1) {
+            obj.title = '点击对列表排序';
+        }
+    }
+
+    var MyTodolist;
+
+    function showTodoList(adminid) {
+        if (!MyTodolist) {
+            var global = $import("https://demo.dscmall.cn/商家管理中心_files/global.js", "js");
+            global.onload = global.onreadystatechange = function () {
+                if (this.readyState && this.readyState == "loading") return;
+                var md5 = $import("https://demo.dscmall.cn/assets/seller/商家管理中心_files/md5.js", "js");
+                md5.onload = md5.onreadystatechange = function () {
+                    if (this.readyState && this.readyState == "loading") return;
+                    var todolist = $import("https://demo.dscmall.cn/assets/seller/商家管理中心_files/todolist.js", "js");
+                    todolist.onload = todolist.onreadystatechange = function () {
+                        if (this.readyState && this.readyState == "loading") return;
+                        MyTodolist = new Todolist();
+                        MyTodolist.show();
+                    }
+                }
+            }
+        } else {
+            if (MyTodolist.visibility) {
+                MyTodolist.hide();
+            } else {
+                MyTodolist.show();
+            }
+        }
+    }
+
+    if (Browser.isIE) {
+        onscroll = function () {
+            document.getElementById('popMsg').style.top = (document.body.scrollTop + document.body.clientHeight - document.getElementById('popMsg').offsetHeight) + "px";
+        }
+    }
+
+    if (document.getElementById("listDiv")) {
+        document.getElementById("listDiv").onclick = function (e) {
+            var obj = Utils.srcElement(e);
+            if (obj.tagName == "INPUT" && obj.type == "checkbox") {
+                if (!document.forms['listForm']) {
+                    return;
+                }
+                var nodes = $("form[name='listForm']").find("input[name='checkboxes[]']");
+                var checked = false;
+                for (i = 0; i < nodes.length; i++) {
+                    if (nodes[i].checked) {
+                        checked = true;
+                        break;
+                    }
+                }
+
+                if (document.getElementById("btnSubmit")) {
+                    if (checked == true) {
+                        document.getElementById("btnSubmit").disabled = false;
+                        if (document.getElementById("selAction")) {
+                            document.getElementById("selAction").disabled = false;
+                        }
+                        document.getElementById("btnSubmit").className = "sc-btn";
+                    } else {
+                        document.getElementById("btnSubmit").disabled = true;
+                        if (document.getElementById("selAction")) {
+                            document.getElementById("selAction").disabled = true;
+                        }
+                        document.getElementById("btnSubmit").className = "sc-btn btn_disabled";
+                    }
+                }
+
+                for (i = 1; i <= 10; i++) {
+                    if (document.getElementById("btnSubmit" + i)) {
+                        if (checked == true) {
+                            document.getElementById("btnSubmit" + i).disabled = false;
+                            document.getElementById("btnSubmit" + i).className = "sc-btn";
+                        } else {
+                            document.getElementById("btnSubmit" + i).disabled = true;
+                            document.getElementById("btnSubmit" + i).className = "sc-btn btn_disabled";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    $(function () {
+        //导航栏鼠标移上左右弹性滑动
+        huadong();
+
+        /* 检查账单 */
+        startCheckBill();
+
+        /* 检查出账单 */
+        outCheckBill();
+    })
+</script>
+<script type="text/javascript" src="./js/jquery.purebox.js"></script>
+<script type="text/javascript">
+    $(".canvas").each(function () {
+        var per = $(this).data("per");
+        if (per > 50) {
+            $(this).find('.circle').addClass('clip-auto');
+            $(this).find('.circle_right').removeClass('wth0');
+        }
+        $(this).find(".circle_left").css("-webkit-transform", "rotate(" + (18 / 5) * per + "deg)");
+    });
+
+    $(function () {
+        if ($.cookie('sellerStartHome') == null) {
+            var content = $("*[ectype='guide_dialog']").html();
+            pb({
+                id: "guide_dialog",
+                title: jl_shop_guide,
+                width: 1080,
+                height: 492,
+                content: content,
+                drag: false,
+                foot: false
+            });
+
+            $("#guide_dialog .guide_list").perfectScrollbar("destroy");
+            $("#guide_dialog .guide_list").perfectScrollbar();
+
+            $("*[ectype='btnNext']").on("click", function () {
+                if (!$(this).hasClass("btn_disabled")) {
+                    var type = $(this).parents(".guide_btn").data("type");
+                    var g_con = $(this).parents("*[ectype='guide_content']");
+
+                    g_con.find(".guide_step .item").eq(type + 1).addClass("current").siblings().removeClass("current");
+                    g_con.find(".guide_list .guide_item").eq(type + 1).show().siblings().hide();
+
+                    $(this).parents(".guide_btn").data("type", type + 1);
+                    $(this).siblings("*[ectype='btnPrev']").removeClass("btn_disabled");
+
+                    if (type == 3) {
+                        $(this).addClass("btn_disabled");
+                        $(this).html(jl_ok_i_know);
+                    } else {
+                        $(this).removeClass("btn_disabled");
+                        $(this).html(jl_know_next);
+                    }
+
+                    $("#guide_dialog .guide_list").perfectScrollbar("destroy");
+                    $("#guide_dialog .guide_list").perfectScrollbar();
+                } else {
+                    $("#guide_dialog,#pb-mask").remove();
+                }
+            });
+
+            $("*[ectype='btnPrev']").on("click", function () {
+                if (!$(this).hasClass("btn_disabled")) {
+                    var type = $(this).parents(".guide_btn").data("type");
+                    var g_con = $(this).parents("*[ectype='guide_content']");
+
+                    g_con.find(".guide_step .item").eq(type - 1).addClass("current").siblings().removeClass("current");
+                    g_con.find(".guide_list .guide_item").eq(type - 1).show().siblings().hide();
+
+                    $(this).parents(".guide_btn").data("type", type - 1);
+                    $(this).siblings("*[ectype='btnNext']").removeClass("btn_disabled");
+                    $(this).siblings("*[ectype='btnNext']").html(jl_know_next);
+
+                    if (type == 1) {
+                        $(this).addClass("btn_disabled");
+                    } else {
+                        $(this).removeClass("btn_disabled");
+                    }
+
+                    $("#guide_dialog .guide_list").perfectScrollbar("destroy");
+                    $("#guide_dialog .guide_list").perfectScrollbar();
+                }
+            });
+
+            //生成cookie
+            $.cookie('sellerStartHome', 'cookieValue', {expires: 1, path: '/'});
+        }
+        ;
+    });
+</script>
+
+
+<h1 id="percode" style="display:none;"></h1></body></html>
