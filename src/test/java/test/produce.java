@@ -35,7 +35,7 @@ public class produce {
         DataSourceConfig dsConfig = new DataSourceConfig();
         dsConfig.setDbType(DbType.MYSQL)// 设置数据库类型
                 .setDriverName("com.mysql.cj.jdbc.Driver")
-                .setUrl("jdbc:mysql://127.0.0.1:3306/big_shopping?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf8")
+                .setUrl("jdbc:mysql://192.168.0.31:3306/big_shopping?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf8")
                 .setUsername("root")
                 .setPassword("110120");
 

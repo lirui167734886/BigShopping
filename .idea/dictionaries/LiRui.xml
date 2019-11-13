@@ -2,8 +2,24 @@
   <dictionary name="LiRui">
     <words>
       <w>bigshopping</w>
+      <w>bonustype</w>
       <w>cateloge</w>
+      <w>ecmoban</w>
+      <w>ecsc</w>
+      <w>frist</w>
+      <w>gicon</w>
+      <w>listtable</w>
+      <w>navbar</w>
+      <w>nobig</w>
+      <w>nosmall</w>
+      <w>purebox</w>
+      <w>quicklink</w>
+      <w>seckill</w>
       <w>shang</w>
+      <w>spand</w>
+      <w>specialchar</w>
+      <w>spliy</w>
+      <w>todolist</w>
     </words>
   </dictionary>
 </component>

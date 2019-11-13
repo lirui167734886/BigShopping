@@ -73,7 +73,22 @@
             <version>1.1.10</version>
         </dependency>
 
-<!--        &lt;!&ndash; JSP相关 &ndash;&gt;-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/javax.servlet/jstl &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>javax.servlet</groupId>-->
+<!--            <artifactId>jstl</artifactId>-->
+<!--            <version>1.2</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/taglibs/standard &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>taglibs</groupId>-->
+<!--            <artifactId>standard</artifactId>-->
+<!--            <version>1.1.2</version>-->
+<!--        </dependency>-->
+
+
+        <!--        &lt;!&ndash; JSP相关 &ndash;&gt;-->
 <!--        <dependency>-->
 <!--            <groupId>jstl</groupId>-->
 <!--            <artifactId>jstl</artifactId>-->
@@ -145,6 +160,7 @@
                 <directory>src/main/java</directory>
                 <includes>
                     <include>**/*.xml</include>
+                    <include>**/*.properties</include>
                 </includes>
                 <filtering>true</filtering>
             </resource>
